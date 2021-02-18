@@ -4,6 +4,9 @@ import './App.css';
 import data from './data';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Home from './pages/Home';
+import Projets from './pages/Projets';
+import Contact from './pages/Contact';
 
 function App() {
   const [student, setStudent] = useState(data);
@@ -12,13 +15,15 @@ function App() {
       <main>
         <Navbar/>
         <Switch>
-          <Route path="/">
+          <Route path="/" component={Home}>
             <section className="container">
               <h2>Attendance List for {student.length} students</h2>
               <List student={student}/>
               <button onClick = {()=>setStudent([])}>Clear list</button>
             </section>
           </Route>
+          <Route path="/projets" component={Projets}/>
+          <Route path="/contact" component={Contact}/>
         </Switch> 
       </main>
     </Router>
